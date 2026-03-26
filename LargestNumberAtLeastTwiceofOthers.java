@@ -1,0 +1,28 @@
+class Solution {
+    public static int dominantIndex(int[] nums) {
+        int max = -1;
+        int secondMax = -1;
+        int index = -1;
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > max) {
+                secondMax = max;
+                max = nums[i];
+                index = i;
+            } else if (nums[i] > secondMax) {
+                secondMax = nums[i];
+            }
+        }
+        
+        if (max >= 2 * secondMax) {
+            return index;
+        }
+        
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 6, 1, 0};
+        System.out.println(dominantIndex(nums)); 
+    }
+}
